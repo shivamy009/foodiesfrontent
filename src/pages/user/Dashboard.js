@@ -59,7 +59,7 @@ const Dashboard = () => {
 
      </div>
      
-     <div className=' m-3 space-y-2'>
+     <div className=' m-3 space-y-2 '>
      <p><span className='   font-bold'>Name: </span>{firstName} {lastName}</p>
      <p><span className='   font-bold'>Email: </span>{email}</p>
      <p><span className='   font-bold'>Address: </span>{address}</p>
