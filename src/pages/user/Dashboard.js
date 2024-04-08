@@ -21,34 +21,59 @@ const Dashboard = () => {
   console.log("Dashboard",currentUser)
   console.log("User id",currentUser.data.user.gender)
 
-  const getuser = async()=>{
-    try{
-      const id = currentUser.data.user._id
-      const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/getuser/${id}`)
+  // const getuser = async()=>{
+  //   try{
+  //     const id = currentUser.data.user._id
+  //     const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/getuser/${id}`)
 
 
-      if(res?.data.success){
-        setFirstName(res.data.user.firstName)
-        setLastName(res.data.user.lastName)
-        setEmail(res.data.user.email)
-        setGender(res.data.user.gender)
-        setdateofbirth(res.data.user.dateofbirth)
-        setAbout(res.data.user.about)
-        setcontact(res.data.user.contactNumber)
-        setaddress(res.data.user.address)
-        setImage(res.data.user.image)
-        console.log("res is",res)
+  //     if(res?.data.success){
+  //       setFirstName(res.data.user.firstName)
+  //       setLastName(res.data.user.lastName)
+  //       setEmail(res.data.user.email)
+  //       setGender(res.data.user.gender)
+  //       setdateofbirth(res.data.user.dateofbirth)
+  //       setAbout(res.data.user.about)
+  //       setcontact(res.data.user.contactNumber)
+  //       setaddress(res.data.user.address)
+  //       setImage(res.data.user.image)
+  //       console.log("res is",res)
 
-      }
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
+  //     }
+  //   }
+  //   catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
   useEffect(()=>{
+    const getuser = async()=>{
+      try{
+        const id = currentUser.data.user._id
+        const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/getuser/${id}`)
+  
+  
+        if(res?.data.success){
+          setFirstName(res.data.user.firstName)
+          setLastName(res.data.user.lastName)
+          setEmail(res.data.user.email)
+          setGender(res.data.user.gender)
+          setdateofbirth(res.data.user.dateofbirth)
+          setAbout(res.data.user.about)
+          setcontact(res.data.user.contactNumber)
+          setaddress(res.data.user.address)
+          setImage(res.data.user.image)
+          console.log("res is",res)
+  
+        }
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+
     getuser()
-  },[])
+  },[currentUser.data.user._id])
 //  getuser()
 
   return (
@@ -59,6 +84,7 @@ const Dashboard = () => {
 
      </div>
      
+
      <div className=' m-3 space-y-2 '>
      <p><span className='   font-bold'>Name: </span>{firstName} {lastName}</p>
      <p><span className='   font-bold'>Email: </span>{email}</p>

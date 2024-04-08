@@ -30,17 +30,26 @@ const Mycart = () => {
     console.log(e)
     dispatch(addsingleItem(e))
   }
-  const total = ()=>{
+  // const total = ()=>{
 
-    let totalpricing =0;
-    cart.map((element)=>(
-      totalpricing=element.price * element.quantity +totalpricing
-    ));
-    setTotalprice(totalpricing)
-  }
+  //   let totalpricing =0;
+  //   cart.map((element)=>(
+  //     totalpricing=element.price * element.quantity +totalpricing
+  //   ));
+  //   setTotalprice(totalpricing)
+  // }
   useEffect(()=>{
+    const total = ()=>{
+
+      let totalpricing =0;
+      cart.map((element)=>(
+        totalpricing=element.price * element.quantity +totalpricing
+      ));
+      setTotalprice(totalpricing)
+    }
     total()
-  },[total])
+  },[cart])
+  // total()
   return (
     <div className=' min-h-screen'>
      <div className="container mx-auto p-4">

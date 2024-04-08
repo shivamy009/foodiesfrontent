@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Homeimage from '.././images/homeimage.png'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { mycart } from '../redux/user/userSlice'
 import toast from 'react-hot-toast'
 // my-app\public\homeimage.png
@@ -11,9 +11,9 @@ import toast from 'react-hot-toast'
 
 const Home = () => {
   const [allfood,setAllfood]=useState([])
-  const {cart} = useSelector((state)=>state.user)
+  // const {cart} = useSelector((state)=>state.user)
   // console.log(cart)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const dispatch = useDispatch()
   const getallproduct = async(req,res)=>{
     try{

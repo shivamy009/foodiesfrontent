@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { FaCartArrowDown } from "react-icons/fa";
-
-
-
+ 
 const Header = () => {
   const {cart} = useSelector((state)=>state.user)
-  const [total,setTotal]=useState(0)
+  // const [total,setTotal]=useState(0)
   const {currentUser} = useSelector((state)=>state.user)
   // console.log(currentUser)
   // console.log(cart)
@@ -53,7 +51,7 @@ const Header = () => {
       </li>
       <li><NavLink to='/contact' className={({isActive})=> isActive ? ' text-black-950' :'text-white hover:text-blue-600 transition-all duration-300'}>Contact</NavLink></li>
       <div className=' flex justify-center items-center'>
-      <li><NavLink to={`/dashboard/cart/${currentUser?.data.user?.role===0 ? 'user' :'admin'}`} className={({isActive})=> isActive ? ' text-black-950' :'text-white hover:text-blue-600 transition-all duration-300'}>cart({cart ? cart.length:total})</NavLink></li>
+      <li><NavLink to={`/dashboard/cart/${currentUser?.data.user?.role===0 ? 'user' :'admin'}`} className={({isActive})=> isActive ? ' text-black-950' :'text-white hover:text-blue-600 transition-all duration-300'}>cart({cart ? cart.length:0})</NavLink></li>
       <li><NavLink to='/contact' className="text-white   transition-all duration-300">{<FaCartArrowDown/>}</NavLink></li>
 
       </div>
