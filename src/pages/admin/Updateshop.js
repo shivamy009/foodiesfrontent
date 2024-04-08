@@ -13,20 +13,20 @@ const Updateshop = () => {
     const {currentUser}= useSelector((state)=>state.user)
     const navigate = useNavigate();
     //get single product
-    const getSingleShop = async()=>{
-        try{
-           const {data}= await axios.get(`${process.env.REACT_APP_API}/api/v1/shop/getsingleshop/${id}`)
+    // const getSingleShop = async()=>{
+    //     try{
+    //        const {data}= await axios.get(`${process.env.REACT_APP_API}/api/v1/shop/getsingleshop/${id}`)
  
-           if(data?.success){
-            setName(data.shop.name)
-            setAddress(data.shop.address)
-           }
-           console.log(data)
-        }
-        catch(err){
-            console.log(err)
-        }
-    }
+    //        if(data?.success){
+    //         setName(data.shop.name)
+    //         setAddress(data.shop.address)
+    //        }
+    //        console.log(data)
+    //     }
+    //     catch(err){
+    //         console.log(err)
+    //     }
+    // }
 
     // update product
     const handlesubmit =async (e)=>{
@@ -52,8 +52,22 @@ const Updateshop = () => {
         }
     }
     useEffect(()=>{
-        getSingleShop()
-    },[])
+      const getSingleShop = async()=>{
+        try{
+           const {data}= await axios.get(`${process.env.REACT_APP_API}/api/v1/shop/getsingleshop/${id}`)
+ 
+           if(data?.success){
+            setName(data.shop.name)
+            setAddress(data.shop.address)
+           }
+           console.log(data)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    getSingleShop()
+    },[id])
     
   return (
     <div className='flex h-screen  justify-center items-center flex-col bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%'>

@@ -18,7 +18,28 @@ const Updatefood = () => {
     const {id}=useParams()
     const navigate = useNavigate()
     const {currentUser}= useSelector((state)=>state.user)
-    const getsinglefood = async ()=>{
+    // const getsinglefood = async ()=>{
+    //     try{
+    //          const {data}=await axios.get(`${process.env.REACT_APP_API}/api/v1/food/getsinglefood/${id}`)
+    //          if(data.success){
+    //             setName(data.food.name)
+    //             setDescription(data.food.description)
+    //             setPrice(data.food.price)
+    //             setVeg(data.food.vegnonveg)
+    //             setQuantity(data.food.quantity)
+    //             setShop(data.food.shop.name)
+    //             setPhoto(data.food.photo)
+    //             console.log(data)
+    //          }
+
+    //     }
+    //     catch(err){
+    //       console.log(err)
+    //     }
+    //  }
+
+     useEffect(()=>{
+      const getsinglefood = async ()=>{
         try{
              const {data}=await axios.get(`${process.env.REACT_APP_API}/api/v1/food/getsinglefood/${id}`)
              if(data.success){
@@ -37,10 +58,8 @@ const Updatefood = () => {
           console.log(err)
         }
      }
-
-     useEffect(()=>{
-        getsinglefood()
-     },[])
+     getsinglefood()
+     },[id])
 
      const updateFood=  async(e)=>{
         e.preventDefault()

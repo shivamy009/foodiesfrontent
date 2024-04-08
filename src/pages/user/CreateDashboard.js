@@ -21,29 +21,29 @@ const CreateDashboard = () => {
   const {currentUser} = useSelector((state)=>state.user)
   const id = currentUser.data.user._id
 
-  const getuser = async()=>{
-    try{
-      const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/getuser/${id}`)
+  // const getuser = async()=>{
+  //   try{
+  //     const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/getuser/${id}`)
 
 
-      if(res?.data.success){
-        setFirstName(res.data.user.firstName)
-        setLastName(res.data.user.lastName)
-        setEmail(res.data.user.email)
-        setGender(res.data.user.gender)
-        setdateofbirth(res.data.user.dateofbirth)
-        setAbout(res.data.user.about)
-        setcontact(res.data.user.contactNumber)
-        setaddress(res.data.user.address)
-        // setImage(res.data.user.image)
-        console.log("res is",res)
+  //     if(res?.data.success){
+  //       setFirstName(res.data.user.firstName)
+  //       setLastName(res.data.user.lastName)
+  //       setEmail(res.data.user.email)
+  //       setGender(res.data.user.gender)
+  //       setdateofbirth(res.data.user.dateofbirth)
+  //       setAbout(res.data.user.about)
+  //       setcontact(res.data.user.contactNumber)
+  //       setaddress(res.data.user.address)
+  //       // setImage(res.data.user.image)
+  //       console.log("res is",res)
 
-      }
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
+  //     }
+  //   }
+  //   catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
   const submithandle= async (e)=>{
     e.preventDefault();
@@ -77,9 +77,35 @@ const CreateDashboard = () => {
 
 
   useEffect(()=>{
+    const getuser = async()=>{
+      try{
+        const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/getuser/${id}`)
+  
+  
+        if(res?.data.success){
+          setFirstName(res.data.user.firstName)
+          setLastName(res.data.user.lastName)
+          setEmail(res.data.user.email)
+          setGender(res.data.user.gender)
+          setdateofbirth(res.data.user.dateofbirth)
+          setAbout(res.data.user.about)
+          setcontact(res.data.user.contactNumber)
+          setaddress(res.data.user.address)
+          // setImage(res.data.user.image)
+          console.log("res is",res)
+  
+        }
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+
     getuser()
-  },[])
+  
+  },[id])
    
+  
   return (
     <div className='bg-gray-100 h-screen flex justify-center items-center '> 
     <div className='bg-white p-8 rounded-lg shadow-md w-full max-w-md '>

@@ -37,20 +37,32 @@ const Menu = () => {
 
       // get filter product
 
-      const filterProduct = async ()=>{
-        try{
-          const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/food/food-filter`,{radio})
+      // const filterProduct = async ()=>{
+      //   try{
+      //     const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/food/food-filter`,{radio})
 
-          // console.log(data)
-          setAllfood(data?.products)
-        }
-        catch(err){
-      console.log(err)
-        }
-      }
+      //     // console.log(data)
+      //     setAllfood(data?.products)
+      //   }
+      //   catch(err){
+      // console.log(err)
+      //   }
+      // }
         
-           
+           // if(radio.length)
       useEffect(()=>{
+        const filterProduct = async ()=>{
+          try{
+            const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/food/food-filter`,{radio})
+  
+            // console.log(data)
+            setAllfood(data?.products)
+          }
+          catch(err){
+        console.log(err)
+          }
+        }
+
         if(radio.length) filterProduct()
         //eslint-disable-nextline
        },[radio])
