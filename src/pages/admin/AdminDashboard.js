@@ -6,9 +6,8 @@ const AdminDashboard = () => {
   const {currentUser} = useSelector((state)=>state.user)
   return (
      <div className=' flex'>
-      <div>
+      <div >
       <Adminmenu/>
-
       </div>
       <div className=' flex-1 p-8'>
         <div>

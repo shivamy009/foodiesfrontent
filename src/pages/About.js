@@ -10,7 +10,7 @@ const About = () => {
       Flavors Of India
       
       </div>
-      <div className=' flex absolute text-white text-4xl overflow-hidden w-2/5 mt-40 justify-center'>
+      <div className='flex absolute text-white text-4xl overflow-hidden w-2/5 mt-40 justify-center'>
       
       We are always here to serve you.
       </div>
