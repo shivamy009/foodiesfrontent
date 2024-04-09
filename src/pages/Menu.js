@@ -90,14 +90,14 @@ const Menu = () => {
 
        </div>
       </div>
-      <div className=' border-red-600 w-5/6 '>
+      <div className=' border-red-600 w-5/6  flex justify-center'>
         {/* {JSON.stringify(radio,null,4)} */}
-      <div className='grid grid-cols-3 gap-4  ml-7 mt-7 mb-5'>
+      <div className='grid grid-cols-1 gap-4  ml-7 mt-14 mb-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:space-x-4 '>
        
        {
         allfood?.map((food,index)=>(
 
-          <div className="bg-white rounded-lg shadow-md w-80 max-w-80 max-h-96 p-4 flex flex-col" key={index} >
+          <div className="bg-white rounded-lg shadow-md w-80 max-w-80 sm:w-60 md:w-72 lg:w-72 xl:w-96 max-h-96 p-4 flex flex-col" key={index} >
             <img
               src={food.photo}
               alt="Product"

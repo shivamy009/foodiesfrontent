@@ -51,7 +51,7 @@ const Home = () => {
           <p className=' text-3xl text-center mt-8'>Now taking online order</p>
           <h1 className=' text-center text-6xl mt-6 font-bold'>Laziz Foods</h1>
         <p className=' flex justify-center text-center w-80 ml-10 mt-10 text-2xl text-black '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, commodi maiores reprehenderit ducimus inventore nobis.</p>
-        <div className=' flex justify-center mt-16 gap-10'>
+        <div className='flex justify-center mt-16 gap-10 sm:text-xl md:text-2xl lg:text-3xl sm:mt-1 md:mt-5 sm:justify-center md:justify-center sm:gap-4'>
           <button className=' bg-blue-500 p-2 rounded-md hover:bg-blue-400 text-black'>Add To cart</button>
           <button className='bg-black p-2 rounded-md text-white'>Book a table</button>
         </div>
@@ -61,7 +61,7 @@ const Home = () => {
         </div>
       </div>
       <div className=' flex w-full justify-center content-center mt-10'>
-      <div className='grid grid-cols-4 gap-4 w-full ml-8'>
+      <div className='grid grid-cols-1 gap-4 w-full ml-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:space-x-4'>
       {
         allfood.map((food,index)=>(
           <div className="bg-white rounded-lg shadow-md w-80 max-w-80 max-h-96 p-4 flex flex-col" key={index}>
