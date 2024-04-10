@@ -52,7 +52,7 @@ const Mycart = () => {
   // total()
   return (
     <div className=' min-h-screen'>
-     <div className="container mx-auto p-4">
+     <div className="container mx-auto p-4 mt-16">
   {/* Cart items */}
   <div className="bg-white rounded-lg shadow-md p-4 mb-4">
     <h1 className="text-2xl font-semibold mb-4">Your Cart</h1>

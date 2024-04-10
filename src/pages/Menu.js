@@ -70,7 +70,7 @@ const Menu = () => {
   return (
     <div className=' flex justify-center min-h-screen'>
       <div className=' border-red-600 w-1/6  flex text-center flex-col shadow-md'>
-        <div className='sticky top-14 z-50 mt-10'>
+        <div className='sticky  top-14 z-50 mt-10 opacity-30 sm:opacity-30 md:opacity-95 lg:opacity-95'>
 
        <h1>Filter According To Your Choice</h1>
        <div className=' flex flex-col ml-4 items-center w-full mt-14'>

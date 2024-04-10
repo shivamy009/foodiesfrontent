@@ -1,7 +1,7 @@
  
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './Components/Header';
+// import Header from './Components/Header';
 import Pagesnotfound from './pages/Pagesnotfound';
 import Home from './pages/Home';
 import Signup from './pages/Auth/Signup';
@@ -22,6 +22,7 @@ import Updatefood from './pages/admin/Updatefood';
 import Mycart from './pages/user/Mycart';
 import Menu from './pages/Menu';
 import CreateDashboard from './pages/user/CreateDashboard';
+import Nav from './Components/Navbar';
 
  
  
@@ -32,7 +33,8 @@ function App() {
    <>
    <BrowserRouter>
    <Toaster/>
-   <Header/>
+   <Nav/>
+   {/* <Header/> */}
    <Routes>
     <Route path='/' element={<Home/>}/>
 
