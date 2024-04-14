@@ -27,6 +27,7 @@ const Menu = () => {
         }
         catch(err){
           console.log(err)
+          setLoader(false)
           // toast.
         }
       }

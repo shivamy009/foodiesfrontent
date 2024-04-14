@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import toast from "react-hot-toast";
+import Loader from "../../Components/Loader";
 
 
 const Signup = () => {
@@ -12,10 +13,11 @@ const Signup = () => {
   const [address,setAddress]= useState('')
   const [confirmpassword,setconfirmPassword]= useState('')
   const navigate = useNavigate();
+  const [loader,setLoader]=useState(false)
 
   const submithandle= async (e)=>{
     e.preventDefault();
-
+    setLoader(true)
     try{
       const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/signup`,{
          firstName:firstName,
@@ -33,7 +35,9 @@ const Signup = () => {
 
       if(res.data.success===true){
         toast.success(res.data.message)
+        setLoader(false)
         navigate('/login')
+
         
       }else{
         toast.error(res.data.message)
@@ -44,11 +48,15 @@ const Signup = () => {
     catch(err){
       console.log(err)
       toast.error(err.response.data.message)
+      setLoader(false)
     }
     // console.log(firstName,lastName,email,password,confirmpassword,address)
   }
   
   return (
+    <>
+    {
+      loader ? <Loader/> :
     <div className="bg-gray-100 h-screen flex justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
@@ -153,6 +161,8 @@ const Signup = () => {
         </p>
       </div>
     </div>
+    }
+    </>
   );
 };
 

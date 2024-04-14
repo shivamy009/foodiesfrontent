@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useDispatch} from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { signInsuccess } from "../../redux/user/userSlice";
+import Loader from "../../Components/Loader";
 // import { current } from "@reduxjs/toolkit";
 
 
@@ -18,9 +19,10 @@ const Login = () => {
   const navigate = useNavigate()
   // const {currentUser} = useSelector((state)=>state.user)
   const dispatch = useDispatch()
+  const [loader,setLoader]=useState(false)
   const submithandle= async (e)=>{
     e.preventDefault();
-
+      setLoader(true)
     try{
       const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/signin`,{
          
@@ -35,6 +37,7 @@ const Login = () => {
       if(res.data.success===true){
         toast.success(res.data.message)
         dispatch(signInsuccess(res))
+        setLoader(false)
         navigate('/')
         
       }else{
@@ -46,11 +49,15 @@ const Login = () => {
     catch(err){
       console.log(err)
       toast.error(err.response.data.message)
+      setLoader(false)
     }
     // console.log(firstName,lastName,email,password,confirmpassword,address)
   }
   
   return (
+    <>
+    {
+      loader ? <Loader/> :
     <div className="gradient-bg h-screen flex justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-4">Sign In</h2>
@@ -97,6 +104,8 @@ const Login = () => {
         </p>
       </div>
     </div>
+    }
+    </>
   );
 };
 

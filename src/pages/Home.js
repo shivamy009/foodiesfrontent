@@ -32,6 +32,7 @@ const Home = () => {
     }
     catch(err){
       console.log(err)
+      setloader(false)
       // toast.
     }
   }
