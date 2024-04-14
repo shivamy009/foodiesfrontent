@@ -4,20 +4,23 @@ import React, { useEffect, useState } from 'react'
 // import { MdDelete } from "react-icons/md";
 import { Prices } from '../Components/Prices';
 import { Radio } from 'antd';
+import Loader from '../Components/Loader';
 
 
 
 const Menu = () => {
     const [allfood,setAllfood]=useState([])
     const [radio,setRadio]=useState([])
+    const [loader,setLoader]=useState(true)
     const getallproduct = async(req,res)=>{
         try{
             const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/food/getallfood`)
             
             if(data?.success){
               setAllfood(data.food)
+              setLoader(false)
             }
-            console.log(data)
+            // console.log(data)
             // console.log(allfood)
             // console.log(allfood)
             // console.log(data.food)
@@ -73,7 +76,7 @@ const Menu = () => {
         <div className='sticky  top-14 z-50 mt-10 opacity-30 sm:opacity-30 md:opacity-95 lg:opacity-95'>
 
        <h1>Filter According To Your Choice</h1>
-       <div className=' flex flex-col ml-4 items-center w-full mt-14'>
+       <div className=' flex flex-col ml-1 lg:ml-4 items-center w-full mt-14'>
         <h1 className=' mb-7 text-2xl text-green-500'>Filter by Price</h1>
         <Radio.Group onChange={(e)=>setRadio(e.target.value)}>
         {
@@ -90,8 +93,10 @@ const Menu = () => {
 
        </div>
       </div>
+      {
+        loader ? <Loader/>:
       <div className=' border-red-600 w-5/6  flex justify-center'>
-        {/* {JSON.stringify(radio,null,4)} */}
+        
       <div className='grid grid-cols-1 gap-4  ml-7 mt-14 mb-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:space-x-4 '>
        
        {
@@ -124,7 +129,8 @@ const Menu = () => {
         </div>
        
       </div>
-    </div>
+      }
+      </div>
   )
 }
 

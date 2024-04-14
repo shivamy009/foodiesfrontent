@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { mycart } from '../redux/user/userSlice'
 import toast from 'react-hot-toast'
+import Loader from '../Components/Loader'
 // my-app\public\homeimage.png
 
 
@@ -14,6 +15,7 @@ const Home = () => {
   // const {cart} = useSelector((state)=>state.user)
   // console.log(cart)
   // const navigate = useNavigate()
+  const [loader,setloader]=useState(true)
   const dispatch = useDispatch()
   const getallproduct = async(req,res)=>{
     try{
@@ -21,6 +23,7 @@ const Home = () => {
         
         if(data?.success){
           setAllfood(data.food)
+          setloader(false)
         }
         // console.log(data)
         // console.log(allfood)
@@ -60,6 +63,8 @@ const Home = () => {
        <img src={Homeimage} alt="" />
         </div>
       </div>
+      {
+        loader ?  <Loader/>:
       <div className=' flex w-full justify-center content-center mt-10'>
       <div className='grid grid-cols-1 gap-4 w-full ml-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:space-x-4'>
       {
@@ -91,6 +96,7 @@ const Home = () => {
       }
         </div>
       </div>
+      }
     </div>
   )
 }

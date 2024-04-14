@@ -23,6 +23,7 @@ import Mycart from './pages/user/Mycart';
 import Menu from './pages/Menu';
 import CreateDashboard from './pages/user/CreateDashboard';
 import Nav from './Components/Navbar';
+import Loader from './Components/Loader';
 
  
  
@@ -37,6 +38,7 @@ function App() {
    {/* <Header/> */}
    <Routes>
     <Route path='/' element={<Home/>}/>
+    <Route path='/afg' element={<Loader/>}/>
 
     <Route path='/dashboard' element={<PrivateRoute/>}>
     <Route path='user' element={<Dashboard/>}/>
